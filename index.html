@@ -114,10 +114,8 @@
     </div>
   </footer>
 
-    <!-- ⚙️ FIX CASE-SENSITIVITY AUTOMATION SCRIPT -->
   <script>
     async function fetchGitHubProjects() {
-      // 🚨 Ensure the username string exactly matches your account name capitalization
       const username = 'OkparaTech'; 
       const container = document.getElementById('github-projects');
       
@@ -132,7 +130,6 @@
 
         container.innerHTML = '';
         
-        // This safely filters out ONLY your portfolio site itself
         const filteredRepos = repos.filter(repo => 
           repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`
         );
@@ -146,7 +143,6 @@
           const projectCard = document.createElement('article');
           projectCard.className = 'card project-card';
           
-          // Fallback message if description is empty or missing on GitHub
           const description = repo.description || 'A software engineering repository built to solve real-world problems.';
           const languageTag = repo.language ? `<span class="tag">${repo.language}</span>` : '<span class="tag">Code</span>';
 
@@ -169,6 +165,7 @@
 
     document.addEventListener('DOMContentLoaded', fetchGitHubProjects);
   </script>
+
 
 </body>
 </html>
