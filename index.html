@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Aspiring Software Engineer</title>
+  <title>Portfolio | Software Engineer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,7 +21,7 @@
 
       <div class="hero">
         <div>
-          <p class="hero-badge">Aspiring Software Engineer</p>
+          <p class="hero-badge">Software Engineer</p>
           <h1>I build projects, learn new technologies, and solve real-world problems through code.</h1>
           <p>
             I am passionate about software development and committed to growing as an engineer by creating meaningful applications,
@@ -42,7 +42,7 @@
         <h2 class="section-title">About Me</h2>
         <div class="card">
           <p>
-            I am an aspiring software engineer who enjoys building practical projects, experimenting with modern technologies,
+            I am a software engineer who enjoys building practical projects, experimenting with modern technologies,
             and learning continuously. My goal is to create software that makes life easier, improves workflows, and solves
             meaningful challenges in everyday life.
           </p>
@@ -55,27 +55,25 @@
         <h2 class="section-title">Technical Skills</h2>
         <div class="card-grid">
           <div class="card">
-            <h3>Languages</h3>
+            <h3>Backend Development</h3>
             <ul>
               <li>Python</li>
-              <li>JavaScript</li>
-              <li>HTML/CSS</li>
+              <li>Go (Golang)</li>
             </ul>
           </div>
           <div class="card">
-            <h3>Frameworks & Libraries</h3>
+            <h3>Web Design</h3>
             <ul>
-              <li>React</li>
-              <li>Node.js</li>
-              <li>Flask</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>Responsive Design</li>
             </ul>
           </div>
           <div class="card">
             <h3>Tools & Practices</h3>
             <ul>
               <li>Git & GitHub</li>
-              <li>REST APIs</li>
-              <li>Responsive Design</li>
+              <li>Visual Studio Code</li>
             </ul>
           </div>
         </div>
@@ -83,35 +81,14 @@
     </section>
 
     <section id="projects">
-  <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="card-grid">
-      <article class="card project-card">
-        <div>
-          <h3>To-Do App</h3>
-          <p>A task management app that helps users organize, prioritize, and complete daily tasks with ease.</p>
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <!-- ⚡ This grid automatically synchronizes with your live GitHub repositories -->
+        <div class="card-grid" id="github-projects">
+          <div class="card"><p>Loading live repositories from GitHub...</p></div>
         </div>
-        <div class="tag-list">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-        </div>
-      </article>
-
-      <article class="card project-card">
-        <div>
-          <h3>Finance Tracker</h3>
-          <p>A personal finance app that allows users to log expenses, track budgets, and monitor spending habits.</p>
-        </div>
-        <div class="tag-list">
-          <span class="tag">Python</span>
-          <span class="tag">Flask</span>
-          <span class="tag">SQLite</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
     <section id="contact">
       <div class="container">
@@ -122,10 +99,10 @@
             Feel free to reach out through GitHub, LinkedIn, or email.
           </p>
           <p>
-  <a href="https://github.com/OkparaTech">GitHub Profile</a> |
-  <a href="https://www.linkedin.com/in/okparagloria" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-  <a href="mailto:okparagloria81@gmail.com">Email Me</a>
-</p>
+            <a href="https://github.com" target="_blank">GitHub Profile</a> |
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <a href="mailto:okparagloria81@gmail.com">Email Me</a>
+          </p>
         </div>
       </div>
     </section>
@@ -136,5 +113,62 @@
       <p>Built with passion for learning, building, and improving every day.</p>
     </div>
   </footer>
+
+    <!-- ⚙️ FIX CASE-SENSITIVITY AUTOMATION SCRIPT -->
+  <script>
+    async function fetchGitHubProjects() {
+      // 🚨 Ensure the username string exactly matches your account name capitalization
+      const username = 'OkparaTech'; 
+      const container = document.getElementById('github-projects');
+      
+      try {
+        const response = await fetch(`https://github.com{username}/repos?sort=updated&per_page=10`);
+        const repos = await response.json();
+        
+        if (!Array.isArray(repos)) {
+          container.innerHTML = '<div class="card"><p>Unable to retrieve repository lists right now.</p></div>';
+          return;
+        }
+
+        container.innerHTML = '';
+        
+        // This safely filters out ONLY your portfolio site itself
+        const filteredRepos = repos.filter(repo => 
+          repo.name.toLowerCase() !== `${username.toLowerCase()}.github.io`
+        );
+
+        if (filteredRepos.length === 0) {
+          container.innerHTML = '<div class="card"><p>No public project repositories found.</p></div>';
+          return;
+        }
+
+        filteredRepos.forEach(repo => {
+          const projectCard = document.createElement('article');
+          projectCard.className = 'card project-card';
+          
+          // Fallback message if description is empty or missing on GitHub
+          const description = repo.description || 'A software engineering repository built to solve real-world problems.';
+          const languageTag = repo.language ? `<span class="tag">${repo.language}</span>` : '<span class="tag">Code</span>';
+
+          projectCard.innerHTML = `
+            <div>
+              <h3>${repo.name.replace(/-/g, ' ')}</h3>
+              <p>${description}</p>
+            </div>
+            <div class="tag-list">
+              ${languageTag}
+              <span class="tag"><a href="${repo.html_url}" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
+            </div>
+          `;
+          container.appendChild(projectCard);
+        });
+      } catch (error) {
+        container.innerHTML = '<div class="card"><p>Failed to load live projects. Please refresh the page.</p></div>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchGitHubProjects);
+  </script>
+
 </body>
 </html>
