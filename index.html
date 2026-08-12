@@ -83,8 +83,56 @@
     <section id="projects">
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="card-grid" id="github-projects">
-          <div class="card"><p>Loading live repositories from GitHub...</p></div>
+        <div class="card-grid">
+          
+          <!-- Card 1 -->
+          <article class="card project-card">
+            <div>
+              <h3>personal task manager</h3>
+              <p>A local workspace tool built with Python to manage schedules, organize data tasks, and track logic structures.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag"><a href="https://github.com" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card project-card">
+            <div>
+              <h3>finance tracker</h3>
+              <p>A custom interface to organize daily expenses, calculate budget limits, and audit personal metrics.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">CSS</span>
+              <span class="tag"><a href="https://github.com" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card project-card">
+            <div>
+              <h3>my to do app</h3>
+              <p>A clean web interface designed to log individual tasks, manage execution queues, and structure workflows.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">CSS</span>
+              <span class="tag"><a href="https://github.com" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card project-card">
+            <div>
+              <h3>first Project</h3>
+              <p>Initial project layout detailing developer capabilities, bio overviews, and structural technical foundations.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Markdown</span>
+              <span class="tag"><a href="https://github.com" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -112,44 +160,5 @@
       <p>Built with passion for learning, building, and improving every day.</p>
     </div>
   </footer>
-
-  <script>
-    async function fetchGitHubProjects() {
-      const container = document.getElementById('github-projects');
-      try {
-        // Plain text API request to eliminate variable interpolation errors entirely
-        const response = await fetch('https://github.com');
-        const repos = await response.json();
-        
-        container.innerHTML = '';
-        
-        // Only filters out the setup website repository itself
-        const filteredRepos = repos.filter(repo => repo.name !== 'OkparaTech.github.io');
-
-        filteredRepos.forEach(repo => {
-          const projectCard = document.createElement('article');
-          projectCard.className = 'card project-card';
-          
-          const description = repo.description || 'A software engineering repository built to solve real-world problems.';
-          const languageTag = repo.language ? `<span class="tag">${repo.language}</span>` : '<span class="tag">Code</span>';
-
-          projectCard.innerHTML = `
-            <div>
-              <h3>${repo.name}</h3>
-              <p>${description}</p>
-            </div>
-            <div class="tag-list">
-              ${languageTag}
-              <span class="tag"><a href="${repo.html_url}" target="_blank" style="color: inherit; text-decoration: none;">💻 View Code</a></span>
-            </div>
-          `;
-          container.appendChild(projectCard);
-        });
-      } catch (error) {
-        container.innerHTML = '<div class="card"><p>Failed to load live projects. Please refresh the page.</p></div>';
-      }
-    }
-    document.addEventListener('DOMContentLoaded', fetchGitHubProjects);
-  </script>
 </body>
 </html>
