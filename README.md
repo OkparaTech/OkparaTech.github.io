@@ -1,26 +1,66 @@
 # OkparaTech Portfolio
 
-This repository contains the personal portfolio website for OkparaTech who is continuously building projects and learning new technologies to solve real-world problems.
+Welcome to my personal portfolio! 👋
 
-## What’s included
-- About Me section
-- Technical Skills section
-- Featured Projects section
-- Contact section with GitHub, LinkedIn, and email links
+I’m **Gloria Okpara**, a Computer Science student and aspiring software developer who is continuously learning, building projects, and exploring technologies to solve real-world problems.
 
-## Projects featured
-- To-Do App
-- Finance Tracker
+This portfolio showcases my projects, technical skills, and journey as I grow as a developer.
 
-## Technologies used
-- HTML
-- CSS
+## 🚀 What’s Included
 
-## How to view locally
-1. Open the `index.html` file in your browser, or
-2. Use a live preview tool such as Live Server in VS Code.
+* **About Me** – Learn more about my background and goals.
+* **Technical Skills** – Technologies and tools I’m currently learning and using.
+* **Projects** – A collection of projects I have built while developing my programming and problem-solving skills.
+* **Contact** – Ways to connect with me through GitHub, LinkedIn, and email.
 
-## Contact
-- GitHub: https://github.com/OkparaTech
-- LinkedIn: https://www.linkedin.com/in/okparagloria
-- Email: okparagloria81@gmail.com
+## 💻 Featured Projects
+
+My current GitHub portfolio includes projects such as:
+
+* **First Project** – My first programming project.
+* **To-Do App** – A simple application for managing tasks.
+* **Finance Tracker** – An application for tracking personal finances.
+* **Personal Task Manager** – A task-management project focused on organizing daily activities.
+
+> More projects will be added as I continue learning and building.
+
+## 🛠️ Technologies
+
+Currently working with:
+
+* HTML
+* CSS
+* Python
+* Go
+* Git & GitHub
+
+I am continuously expanding my technical skills as I progress through my Computer Science journey.
+
+## 🌱 Currently Learning
+
+I’m focused on improving my:
+
+* Programming fundamentals
+* Software development
+* Web development
+* Problem-solving
+* Git and GitHub
+* Building real-world projects
+
+## 📂 Projects
+
+You can explore all of my public projects on GitHub:
+
+**GitHub:** https://github.com/OkparaTech
+
+## 📬 Contact
+
+* **GitHub:** https://github.com/OkparaTech
+* **LinkedIn:** https://www.linkedin.com/in/okparagloria
+* **Email:** [okparagloria81@gmail.com](mailto:okparagloria81@gmail.com)
+
+---
+
+⭐ Thanks for visiting my portfolio!
+
+I’m constantly learning, building, and improving. This portfolio will grow alongside my development journey.
